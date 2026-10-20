@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KasKelas - Dasbor Pembukuan Kas Kelas</title>
+  <!-- Menghubungkan ke file CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Bagian Header Aplikasi -->
+    <header>
+      <h1>KasKelas</h1>
+      <p>Aplikasi Manajemen Iuran & Pengeluaran Kelas XI</p>
+    </header>
+
+    <!-- Panel Ringkasan Metrik Saldo -->
+    <section class="summary-cards">
+      <div class="card total-balance">
+        <h3>Total Saldo Kas</h3>
+        <p id="totalBalance">Rp 0</p>
+      </div>
+      <div class="card income">
+        <h3>Total Pemasukan</h3>
+        <p id="totalIncome">Rp 0</p>
+      </div>
+      <div class="card expense">
+        <h3>Total Pengeluaran</h3>
+        <p id="totalExpense">Rp 0</p>
+      </div>
+    </section>
+
+    <!-- Formulir Input Transaksi Baru -->
+    <section class="form-section">
+      <h2>Catat Transaksi Baru</h2>
+      <form id="transactionForm">
+        <div class="form-group">
+          <label for="desc">Keterangan Transaksi</label>
+          <input type="text" id="desc" placeholder="Contoh: Iuran kas minggu ke-3" required autocomplete="off">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="amount">Nominal Uang (Rp)</label>
+            <input type="number" id="amount" min="100" placeholder="Contoh: 15000" required>
+          </div>
+          <div class="form-group">
+            <label for="type">Jenis Transaksi</label>
+            <select id="type" required>
+              <option value="in">Pemasukan (Uang Masuk)</option>
+              <option value="out">Pengeluaran (Uang Keluar)</option>
+            </select>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn-primary">Simpan Transaksi</button>
+      </form>
+    </section>
+
+    <!-- Tabel Riwayat Transaksi -->
+    <section class="history-section">
+      <div class="history-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2>Riwayat Transaksi</h2>
+        <!-- Tombol ekspor disiapkan untuk fitur lanjutan -->
+        <button id="exportBtn" class="btn-secondary">Ekspor Data (CSV)</button>
+      </div>
+      
+      <div style="overflow-x: auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Keterangan</th>
+              <th>Jenis</th>
+              <th>Nominal</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="transactionList">
+            <!-- Data transaksi akan dimuat di sini oleh JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Menghubungkan ke file JavaScript -->
+  <script src="storage.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
